@@ -46,7 +46,7 @@ class _myHomePageState extends State<myHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("นายฮุยก๋วยเตี๋ยวลูกชิ้นปลา") //Header
+      appBar: AppBar(title: Text("Count number") //Header
           ),
       body: Center(
           child: Column(
@@ -61,7 +61,7 @@ class _myHomePageState extends State<myHomePage>
       )), //Body
       floatingActionButton: FloatingActionButton(
         onPressed: addnumber,
-        child: Icon(Icons.adb_rounded),
+        child: Icon(Icons.add_box),
       ),
     );
   }
