@@ -32,7 +32,12 @@ class _myHomePageState extends State<myHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("บัญชีของฉัน") //Header
+        appBar: AppBar(
+            title: Text(
+          "บัญชีของฉัน",
+          style: TextStyle(
+              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+        ) //Header
             ),
         //กำหนด list >10 ค่าขึ้นไป
         body: Padding(
@@ -45,14 +50,52 @@ class _myHomePageState extends State<myHomePage>
                     color: Colors.blue.shade100,
                     //กำหนดความโค้ง
                     borderRadius: BorderRadius.circular(15)),
-                height: 100,
+                height: 120,
                 child: Row(
-                  children: [Text("ยอดคงเหลือ"), Text("50000")],
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "ยอดคงเหลือ",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "  20000",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
                 ),
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.blue.shade200),
-                height: 100,
+                padding: const EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                    color: Colors.blue.shade100,
+                    //กำหนดความโค้ง
+                    borderRadius: BorderRadius.circular(15)),
+                height: 120,
+                child: Row(
+                  children: [
+                    Text(
+                      "รายรับ",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "  30000",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
