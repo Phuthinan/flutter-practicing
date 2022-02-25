@@ -35,20 +35,27 @@ class _myHomePageState extends State<myHomePage>
         appBar: AppBar(title: Text("บัญชีของฉัน") //Header
             ),
         //กำหนด list >10 ค่าขึ้นไป
-        body: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.blue.shade100,
-                  //กำหนดความโค้ง
-                  borderRadius: BorderRadius.circular(15)),
-              height: 100,
-            ),
-            Container(
-              decoration: BoxDecoration(color: Colors.blue.shade200),
-              height: 100,
-            ),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                    color: Colors.blue.shade100,
+                    //กำหนดความโค้ง
+                    borderRadius: BorderRadius.circular(15)),
+                height: 100,
+                child: Row(
+                  children: [Text("ยอดคงเหลือ"), Text("50000")],
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(color: Colors.blue.shade200),
+                height: 100,
+              ),
+            ],
+          ),
         ));
   }
 }
