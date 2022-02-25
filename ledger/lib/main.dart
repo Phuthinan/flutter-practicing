@@ -37,7 +37,10 @@ class _myHomePageState extends State<myHomePage>
             title: Text(
           "บัญชีของฉัน",
           style: TextStyle(
-              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+            fontSize: 25,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ) //Header
             ),
         //กำหนด list >10 ค่าขึ้นไป
@@ -45,11 +48,11 @@ class _myHomePageState extends State<myHomePage>
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              MoneyBox("ยอดคงเหลือ", 20000, Colors.blue.shade200, 150),
+              MoneyBox("ยอดคงเหลือ", 200000.25, Colors.blue.shade200, 150),
               SizedBox(
                 height: 8,
               ),
-              MoneyBox("รายรับ", 30000, Colors.green.shade200, 100),
+              MoneyBox("รายรับ", 300000.350, Colors.green.shade200, 100),
               SizedBox(
                 height: 8,
               ),
