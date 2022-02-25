@@ -61,12 +61,15 @@ class _myHomePageState extends State<myHomePage>
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      "  20000",
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                    Expanded(
+                      child: Text(
+                        "20000",
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.right,
+                      ),
                     )
                   ],
                 ),
@@ -74,7 +77,7 @@ class _myHomePageState extends State<myHomePage>
               Container(
                 padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
-                    color: Colors.blue.shade100,
+                    color: Colors.blue.shade200,
                     //กำหนดความโค้ง
                     borderRadius: BorderRadius.circular(15)),
                 height: 120,
@@ -87,12 +90,44 @@ class _myHomePageState extends State<myHomePage>
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
+                    Expanded(
+                      child: Text(
+                        "30000",
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.right,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                    color: Colors.blueAccent.shade100,
+                    //กำหนดความโค้ง
+                    borderRadius: BorderRadius.circular(15)),
+                height: 120,
+                child: Row(
+                  children: [
                     Text(
-                      "  30000",
+                      "รายจ่าย",
                       style: TextStyle(
                           fontSize: 25,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "10000",
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.right,
+                      ),
                     )
                   ],
                 ),
