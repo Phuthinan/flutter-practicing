@@ -74,13 +74,16 @@ class _myHomePageState extends State<myHomePage>
                   ],
                 ),
               ),
+              SizedBox(
+                height: 8,
+              ),
               Container(
                 padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                     color: Colors.blue.shade200,
                     //กำหนดความโค้ง
                     borderRadius: BorderRadius.circular(15)),
-                height: 120,
+                height: 100,
                 child: Row(
                   children: [
                     Text(
@@ -103,13 +106,16 @@ class _myHomePageState extends State<myHomePage>
                   ],
                 ),
               ),
+              SizedBox(
+                height: 8,
+              ),
               Container(
                 padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                     color: Colors.blueAccent.shade100,
                     //กำหนดความโค้ง
                     borderRadius: BorderRadius.circular(15)),
-                height: 120,
+                height: 100,
                 child: Row(
                   children: [
                     Text(
