@@ -26,10 +26,7 @@ class myHomePage extends StatefulWidget {
   _myHomePageState createState() => _myHomePageState();
 }
 
-class _myHomePageState extends State<myHomePage>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
+class _myHomePageState extends State<myHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
