@@ -27,35 +27,39 @@ class myHomePage extends StatefulWidget {
 }
 
 class _myHomePageState extends State<myHomePage> {
+  int number = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    print("Hi iniState");
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("Hi Build");
     return Scaffold(
-        appBar: AppBar(
-            title: Text(
-          "บัญชีของฉัน",
-          style: TextStyle(
-            fontSize: 25,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+      appBar: AppBar(
+          title: Text(
+        "บัญชีของฉัน",
+        style: TextStyle(
+          fontSize: 25,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ) //Header
           ),
-        ) //Header
-            ),
-        //กำหนด list >10 ค่าขึ้นไป
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              MoneyBox("ยอดคงเหลือ", 200000.25, Colors.blue.shade200, 150),
-              SizedBox(
-                height: 8,
-              ),
-              MoneyBox("รายรับ", 300000.350, Colors.green.shade200, 100),
-              SizedBox(
-                height: 8,
-              ),
-              MoneyBox("รายจ่าย", 10000, Colors.red.shade200, 100),
-            ],
-          ),
-        ));
+      body: Column(
+        children: [Text(number.toString(), style: TextStyle(fontSize: 30))],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            number++;
+          });
+        },
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
