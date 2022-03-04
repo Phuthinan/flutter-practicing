@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:login_system/screen/login.dart';
+import 'package:login_system/screen/register.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,7 +21,12 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return RegisterScreen();
+                      }));
+                    },
                     icon: Icon(Icons.add),
                     label: Text(
                       "Register",
@@ -29,7 +36,12 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return LoginScreen();
+                      }));
+                    },
                     icon: Icon(Icons.login),
                     label: Text(
                       "Login",
