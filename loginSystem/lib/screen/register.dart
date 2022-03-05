@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_system/model/profile.dart';
 import 'package:login_system/model/profile.dart';
 import 'package:flutter/src/widgets/form.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -33,6 +34,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: TextStyle(fontSize: 20),
                   ),
                   TextFormField(
+                    validator: MultiValidator([
+                      RequiredValidator(errorText: "please enter Email"),
+                      EmailValidator(errorText: 'incorrect Email form')
+                    ]),
                     keyboardType: TextInputType.emailAddress,
                     onSaved: (String? email) {
                       profile.email = email;
@@ -43,6 +48,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: TextStyle(fontSize: 20),
                   ),
                   TextFormField(
+                    validator:
+                        RequiredValidator(errorText: "please enter Password"),
                     obscureText: true,
                     onSaved: (String? password) {
                       profile.password = password;
@@ -56,10 +63,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: TextStyle(fontSize: 20),
                       ),
                       onPressed: () {
-                        formKey.currentState?.save();
-                        print(
-                            "email=${profile.email} password=${profile.password}");
-                        formKey.currentState?.reset();
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState?.save();
+                          print(
+                              "email=${profile.email} password=${profile.password}");
+                          formKey.currentState?.reset();
+                        }
                       },
                     ),
                   )
