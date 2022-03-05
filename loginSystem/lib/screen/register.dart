@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:login_system/model/profile.dart';
+import 'package:login_system/model/profile.dart';
+import 'package:flutter/src/widgets/form.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final formKey = GlobalKey<FormState>();
+  Profile profile = Profile();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +34,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
+                    onSaved: (String? email) {
+                      profile.email = email;
+                    },
                   ),
                   Text(
                     "Password: ",
                     style: TextStyle(fontSize: 20),
                   ),
-                  TextField(
+                  TextFormField(
                     obscureText: true,
+                    onSaved: (String? password) {
+                      profile.password = password;
+                    },
                   ),
                   SizedBox(
                     width: double.infinity,
@@ -45,7 +55,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         "Enter",
                         style: TextStyle(fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        formKey.currentState?.save();
+                        print(
+                            "email=${profile.email} password=${profile.password}");
+                        formKey.currentState?.reset();
+                      },
                     ),
                   )
                 ],
