@@ -1,0 +1,108 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "count number",
+            "cwd": "count number",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "count number (profile mode)",
+            "cwd": "count number",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "count number (release mode)",
+            "cwd": "count number",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "food menu",
+            "cwd": "food menu",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "food menu (profile mode)",
+            "cwd": "food menu",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "food menu (release mode)",
+            "cwd": "food menu",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "ledger",
+            "cwd": "ledger",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ledger (profile mode)",
+            "cwd": "ledger",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "ledger (release mode)",
+            "cwd": "ledger",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "loginSystem",
+            "cwd": "loginSystem",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "loginSystem (profile mode)",
+            "cwd": "loginSystem",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "loginSystem (release mode)",
+            "cwd": "loginSystem",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "new project",
+            "cwd": "new project",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "new project (profile mode)",
+            "cwd": "new project",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "new project (release mode)",
+            "cwd": "new project",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
