@@ -5,6 +5,7 @@ import 'package:login_system/model/profile.dart';
 import 'package:flutter/src/widgets/form.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final formKey = GlobalKey<FormState>();
-  Profile profile = Profile();
+  Profile profile = Profile(email: '', password: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
   @override
@@ -55,7 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ]),
                             keyboardType: TextInputType.emailAddress,
                             onSaved: (String? email) {
-                              profile.email = email;
+                              profile.email = email!;
                             },
                           ),
                           Text(
@@ -67,7 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 errorText: "please enter Password"),
                             obscureText: true,
                             onSaved: (String? password) {
-                              profile.password = password;
+                              profile.password = password!;
                             },
                           ),
                           SizedBox(
@@ -77,12 +78,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 "Enter",
                                 style: TextStyle(fontSize: 20),
                               ),
-                              onPressed: () {
+                              onPressed: () async {
                                 if (formKey.currentState!.validate()) {
                                   formKey.currentState?.save();
-                                  print(
-                                      "email=${profile.email} password=${profile.password}");
-                                  formKey.currentState?.reset();
+                                  try {
+                                    await FirebaseAuth.instance
+                                        .createUserWithEmailAndPassword(
+                                            email: profile.email,
+                                            password: profile.password);
+                                    formKey.currentState?.reset();
+                                  } on FirebaseAuthException catch (e) {
+                                    print(e.message);
+                                  }
                                 }
                               },
                             ),
