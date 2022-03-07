@@ -1,11 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login_system/model/profile.dart';
 import 'package:login_system/model/profile.dart';
 import 'package:flutter/src/widgets/form.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:login_system/screen/home.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -86,9 +88,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         .createUserWithEmailAndPassword(
                                             email: profile.email,
                                             password: profile.password);
+                                    Fluttertoast.showToast(
+                                        msg: "Succeed to create account",
+                                        gravity: ToastGravity.CENTER);
                                     formKey.currentState?.reset();
+                                    Navigator.pushReplacement(context,
+                                        MaterialPageRoute(builder: ((context) {
+                                      return HomeScreen();
+                                    })));
                                   } on FirebaseAuthException catch (e) {
-                                    print(e.message);
+                                    // print("code: ${e.code}");
+                                    print(e.message.runtimeType);
+                                    Fluttertoast.showToast(
+                                        msg: "Error: ${e.message}",
+                                        gravity: ToastGravity.CENTER);
                                   }
                                 }
                               },
