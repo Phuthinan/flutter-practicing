@@ -87,15 +87,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     await FirebaseAuth.instance
                                         .createUserWithEmailAndPassword(
                                             email: profile.email,
-                                            password: profile.password);
-                                    Fluttertoast.showToast(
-                                        msg: "Succeed to create account",
-                                        gravity: ToastGravity.CENTER);
-                                    formKey.currentState?.reset();
-                                    Navigator.pushReplacement(context,
-                                        MaterialPageRoute(builder: ((context) {
-                                      return HomeScreen();
-                                    })));
+                                            password: profile
+                                                .password) //Add callBack fn
+                                        .then((value) {
+                                      Fluttertoast.showToast(
+                                          msg: "Succeed to create account",
+                                          gravity: ToastGravity.CENTER);
+                                      formKey.currentState?.reset();
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(
+                                              builder: ((context) {
+                                        return HomeScreen();
+                                      })));
+                                    });
                                   } on FirebaseAuthException catch (e) {
                                     // print("code: ${e.code}");
                                     print(e.message.runtimeType);
