@@ -77,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: double.infinity,
                             child: ElevatedButton(
                               child: Text(
-                                "Enter",
+                                "Register",
                                 style: TextStyle(fontSize: 20),
                               ),
                               onPressed: () async {
