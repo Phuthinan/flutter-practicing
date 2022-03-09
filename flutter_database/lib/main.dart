@@ -31,18 +31,35 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FormScreen();
-                  }));
-                },
-                icon: Icon(Icons.add))
-          ],
-        ),
-        body: Container());
+      appBar: AppBar(
+        title: Text(widget.title),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return FormScreen();
+                }));
+              },
+              icon: Icon(Icons.add))
+        ],
+      ),
+      body: ListView.builder(
+          itemCount: 4,
+          itemBuilder: (context, int index) {
+            return Card(
+              elevation: 5, //drop shadow ค่ามากเงาเยอะ
+              margin: const EdgeInsets.symmetric(
+                  vertical: 8.0, horizontal: 5), //กำหนดระยะห่างของ card จากขอบ
+              child: ListTile(
+                leading: CircleAvatar(
+                    child: FittedBox(
+                  child: Text("500"),
+                )),
+                title: Text("รายการ"),
+                subtitle: Text("09/03/2022"),
+              ),
+            );
+          }),
+    );
   }
 }
