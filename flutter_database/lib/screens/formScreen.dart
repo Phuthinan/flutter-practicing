@@ -1,6 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_database/models/transaction.dart';
+import 'package:flutter_database/providers/transactionProvider.dart';
+import 'package:provider/provider.dart';
 
 class FormScreen extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -51,7 +54,17 @@ class FormScreen extends StatelessWidget {
                   if (formKey.currentState!.validate()) {
                     var title = titleController.text;
                     var amount = amountController.text;
-                    print("Title: $title amout: $amount");
+                    // print("Title: $title amout: $amount");
+
+                    //เตรียมข้อมูล
+                    Transaction statement = Transaction(
+                        title: title,
+                        amount: double.parse(amount),
+                        date: DateTime.now());
+                    //เรียก provider
+                    var provider = Provider.of<TransactionProvider>(context,
+                        listen: false);
+                    provider.addTransaction(statement);
                     Navigator.pop(context); //กลับไปหน้าก่อนหน้า เอาหน้าออก
                   }
                 },

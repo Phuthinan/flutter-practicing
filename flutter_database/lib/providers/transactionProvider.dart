@@ -2,11 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_database/models/transaction.dart';
 
 class TransactionProvider with ChangeNotifier {
-  List<Transaction> transaction = [
-    Transaction(title: "ซื้อหนังสือ", amount: 500, date: DateTime.now()),
-    Transaction(title: "ซื้อเสื้อผ้า", amount: 1000, date: DateTime.now()),
-    Transaction(title: "เครื่องสำอาง", amount: 2000, date: DateTime.now()),
-  ];
+  List<Transaction> transaction = [];
 
   //ดึงข้อมูล
   List<Transaction> getTransaction() {
@@ -14,6 +10,8 @@ class TransactionProvider with ChangeNotifier {
   }
 
   void addTransaction(Transaction statement) {
-    transaction.add(statement);
+    //transaction.add(statement); //ไว้ล่างสุด
+    transaction.insert(0, statement); //ไว้บนสุด
+    notifyListeners();
   }
 }
