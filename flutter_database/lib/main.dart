@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_database/providers/transactionProvider.dart';
 import 'package:flutter_database/screens/formScreen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,12 +11,19 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) {
+          return TransactionProvider();
+        })
+      ],
+      child: MaterialApp(
+        title: 'Account App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(title: 'Account App'),
       ),
-      home: const MyHomePage(title: 'Account App'),
     );
   }
 }
