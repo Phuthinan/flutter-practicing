@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 
 class FormScreen extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
+  //controller
+  final titleController = TextEditingController(); // รับชื่อรายการ
+  final amountController = TextEditingController(); // รับจำนวนเงิน
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,7 @@ class FormScreen extends StatelessWidget {
               TextFormField(
                 decoration: new InputDecoration(labelText: "ชื่อรายการ"),
                 autofocus: true, //กดเข้ามาจะขึ้นให้พิมพ์ตรงนี้เลย
+                controller: titleController,
                 validator: (String? str) {
                   if (str!.isEmpty) {
                     return "กรุณาป้อนชื่อรายการ";
@@ -30,6 +34,7 @@ class FormScreen extends StatelessWidget {
               TextFormField(
                 decoration: new InputDecoration(labelText: "จำนวนเงิน"),
                 keyboardType: TextInputType.number,
+                controller: amountController,
                 validator: (String? str) {
                   if (str!.isEmpty) {
                     return "กรุณาป้อนจำนวนเงิน";
@@ -44,6 +49,9 @@ class FormScreen extends StatelessWidget {
               FlatButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
+                    var title = titleController.text;
+                    var amount = amountController.text;
+                    print("Title: $title amout: $amount");
                     Navigator.pop(context); //กลับไปหน้าก่อนหน้า เอาหน้าออก
                   }
                 },
