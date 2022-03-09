@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class FormScreen extends StatelessWidget {
-  const FormScreen({Key? key}) : super(key: key);
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -14,22 +14,38 @@ class FormScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Form(
+          key: formKey,
           child: Column(
             children: [
               TextFormField(
                 decoration: new InputDecoration(labelText: "ชื่อรายการ"),
-                autofocus: true,
-                //กดเข้ามาจะขึ้นให้พิมพ์ตรงนี้เลย
+                autofocus: true, //กดเข้ามาจะขึ้นให้พิมพ์ตรงนี้เลย
+                validator: (String? str) {
+                  if (str!.isEmpty) {
+                    return "กรุณาป้อนชื่อรายการ";
+                  }
+                  return null;
+                },
               ),
               TextFormField(
                 decoration: new InputDecoration(labelText: "จำนวนเงิน"),
                 keyboardType: TextInputType.number,
+                validator: (String? str) {
+                  if (str!.isEmpty) {
+                    return "กรุณาป้อนจำนวนเงิน";
+                  }
+                  if (double.parse(str) <= 0) {
+                    return "กรุณาป้อนตัวเลขมากกว่า0";
+                  }
+                  return null;
+                },
                 //กำหนดให้แป้นพิมเป็นตัวเลข
               ),
               FlatButton(
                 onPressed: () {
-                  Navigator.pop(context);
-                  //กลับไปหน้าก่อนหน้า เอาหน้าออก
+                  if (formKey.currentState!.validate()) {
+                    Navigator.pop(context); //กลับไปหน้าก่อนหน้า เอาหน้าออก
+                  }
                 },
                 child: Text("เพิ่มข้อมูล"),
                 textColor: Colors.white,
