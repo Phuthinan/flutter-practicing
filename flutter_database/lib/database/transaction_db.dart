@@ -26,12 +26,18 @@ class TransactionDB {
   }
 
   //บันทึกข้อมูล
-  InsertData(Transactions statement) async {
+  Future<int> InsertData(Transactions statement) async {
     //  ฐานข้อมูล => store
     var db = await this.openDatabase();
     var store = intMapStoreFactory.store("expend");
 
     // json
-    store.add(db, {"{$statement.title}"});
+    var keyID = store.add(db, {
+      "title": statement.title,
+      "amount": statement.amount,
+      "date": statement.date
+    });
+    db.close(); //ปิดฐานข้อมูล
+    return keyID;
   }
 }

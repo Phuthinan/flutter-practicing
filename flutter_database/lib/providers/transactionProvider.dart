@@ -3,17 +3,17 @@ import 'package:flutter_database/database/transaction_db.dart';
 import 'package:flutter_database/models/transaction.dart';
 
 class TransactionProvider with ChangeNotifier {
-  List<Transaction> transaction = [];
+  List<Transactions> transaction = [];
 
   //ดึงข้อมูล
-  List<Transaction> getTransaction() {
+  List<Transactions> getTransaction() {
     return transaction;
   }
 
-  void addTransaction(Transaction statement) async {
-    var db = await TransactionDB(dbName: "transaction.db").openDatabase();
-    print(db);
-    //transaction.add(statement); //ไว้ล่างสุด
+  void addTransaction(Transactions statement) async {
+    var db = TransactionDB(dbName: "transaction.db");
+    //    [บันทึกข้อมูล]
+    await db.InsertData(statement);
     transaction.insert(0, statement); //ไว้บนสุด
     notifyListeners(); //notificate to consumer
   }

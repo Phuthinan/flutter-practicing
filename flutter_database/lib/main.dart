@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             return ListView.builder(
                 itemCount: trans.transaction.length,
                 itemBuilder: (context, int index) {
-                  Transaction data = trans.transaction[index];
+                  Transactions data = trans.transaction[index];
                   return Card(
                     elevation: 5, //drop shadow ค่ามากเงาเยอะ
                     margin: const EdgeInsets.symmetric(

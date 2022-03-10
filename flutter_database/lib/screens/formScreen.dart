@@ -57,7 +57,7 @@ class FormScreen extends StatelessWidget {
                     // print("Title: $title amout: $amount");
 
                     //เตรียมข้อมูล
-                    Transaction statement = Transaction(
+                    Transactions statement = Transactions(
                         title: title,
                         amount: double.parse(amount),
                         date: DateTime.now());
