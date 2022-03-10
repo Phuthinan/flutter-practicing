@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_database/models/transaction.dart';
 import 'package:flutter_database/providers/transactionProvider.dart';
 import 'package:flutter_database/screens/formScreen.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -54,25 +55,38 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         body: Consumer(builder: (context, TransactionProvider trans, child) {
-          return ListView.builder(
-              itemCount: trans.transaction.length,
-              itemBuilder: (context, int index) {
-                Transaction data = trans.transaction[index];
-                return Card(
-                  elevation: 5, //drop shadow ค่ามากเงาเยอะ
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 8.0,
-                      horizontal: 5), //กำหนดระยะห่างของ card จากขอบ
-                  child: ListTile(
-                    leading: CircleAvatar(
-                        child: FittedBox(
-                      child: Text(data.amount.toString()),
-                    )),
-                    title: Text(data.title),
-                    subtitle: Text(data.date.toString()),
-                  ),
-                );
-              });
+          var count = trans.transaction.length;
+          if (count <= 0) {
+            return Center(
+              child: Text(
+                "ไม่พบข้อมูล",
+                style: TextStyle(
+                  fontSize: 40,
+                ),
+              ),
+            );
+          } else {
+            return ListView.builder(
+                itemCount: trans.transaction.length,
+                itemBuilder: (context, int index) {
+                  Transaction data = trans.transaction[index];
+                  return Card(
+                    elevation: 5, //drop shadow ค่ามากเงาเยอะ
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 5), //กำหนดระยะห่างของ card จากขอบ
+                    child: ListTile(
+                      leading: CircleAvatar(
+                          child: FittedBox(
+                        child: Text(data.amount.toString()),
+                      )),
+                      title: Text(data.title),
+                      subtitle:
+                          Text(DateFormat("dd/mm/yyyy").format(data.date)),
+                    ),
+                  );
+                });
+          }
         }));
   }
 }
