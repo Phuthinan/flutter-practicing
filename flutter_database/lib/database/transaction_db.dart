@@ -35,9 +35,18 @@ class TransactionDB {
     var keyID = store.add(db, {
       "title": statement.title,
       "amount": statement.amount,
-      "date": statement.date
+      "date": statement.date.toIso8601String()
     });
     db.close(); //ปิดฐานข้อมูล
     return keyID;
+  }
+
+  //  ดึงข้อมูล
+  Future<bool> loadAllData() async {
+    var db = await this.openDatabase();
+    var store = intMapStoreFactory.store("expend");
+    var snapshot = await store.find(db);
+    print(snapshot);
+    return true;
   }
 }
