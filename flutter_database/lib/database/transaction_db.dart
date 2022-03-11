@@ -46,7 +46,9 @@ class TransactionDB {
     var db = await this.openDatabase();
     var store = intMapStoreFactory.store("expend");
     print(store);
-    var snapshot = await store.find(db);
+    var snapshot = await store.find(db,
+        finder: Finder(sortOrders: [SortOrder(Field.key, false)]));
+    //false เรียงจากมากไปน้อย true เรียงจากน้อยไปมาก (เรียง keyID)
     List<Transactions> transactionList = [];
     for (var record in snapshot) {
       transactionList.add(Transactions(
