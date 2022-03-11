@@ -42,11 +42,20 @@ class TransactionDB {
   }
 
   //  ดึงข้อมูล
-  Future<bool> loadAllData() async {
+  Future<List<Transactions>> loadAllData() async {
     var db = await this.openDatabase();
     var store = intMapStoreFactory.store("expend");
+    print(store);
     var snapshot = await store.find(db);
-    print(snapshot);
-    return true;
+    List<Transactions> transactionList = [];
+    for (var record in snapshot) {
+      transactionList.add(Transactions(
+          title: '${record["title"]}',
+          amount: double.parse('${record["amount"]}'),
+          date: DateTime.parse('${record["date"]}')));
+    }
+    // print(snapshot);
+
+    return transactionList;
   }
 }

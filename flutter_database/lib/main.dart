@@ -39,6 +39,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void initState() {
+    super.initState();
+    Provider.of<TransactionProvider>(context, listen: false).starttData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,14 +81,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         vertical: 8.0,
                         horizontal: 5), //กำหนดระยะห่างของ card จากขอบ
                     child: ListTile(
-                      leading: CircleAvatar(
-                          child: FittedBox(
-                        child: Text(data.amount.toString()),
-                      )),
-                      title: Text(data.title),
-                      subtitle:
-                          Text(DateFormat("dd/mm/yyyy").format(data.date)),
-                    ),
+                        leading: CircleAvatar(
+                            child: FittedBox(
+                          child: Text(data.amount.toString()),
+                        )),
+                        title: Text(data.title),
+                        subtitle: Text(
+                            'Date: ${DateFormat("dd/MM/yyyy").format(data.date)}')),
                   );
                 });
           }
