@@ -1,8 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_database/main.dart';
 import 'package:flutter_database/models/transaction.dart';
 import 'package:flutter_database/providers/transactionProvider.dart';
+import 'package:flutter_database/screens/homeScreen.dart';
 import 'package:provider/provider.dart';
 
 class FormScreen extends StatelessWidget {
@@ -25,7 +27,7 @@ class FormScreen extends StatelessWidget {
             children: [
               TextFormField(
                 decoration: new InputDecoration(labelText: "ชื่อรายการ"),
-                autofocus: true, //กดเข้ามาจะขึ้นให้พิมพ์ตรงนี้เลย
+                autofocus: false,
                 controller: titleController,
                 validator: (String? str) {
                   if (str!.isEmpty) {
@@ -65,7 +67,13 @@ class FormScreen extends StatelessWidget {
                     var provider = Provider.of<TransactionProvider>(context,
                         listen: false);
                     provider.addTransaction(statement);
-                    Navigator.pop(context); //กลับไปหน้าก่อนหน้า เอาหน้าออก
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            fullscreenDialog: true,
+                            builder: (context) {
+                              return MyHomePage();
+                            })); //กลับไปหน้าก่อนหน้า เอาหน้าออก
                   }
                 },
                 child: Text("เพิ่มข้อมูล"),

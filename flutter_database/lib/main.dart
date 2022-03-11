@@ -25,16 +25,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(title: 'Account App'),
+        home: MyHomePage(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -50,8 +47,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return DefaultTabController(
         length: 2, //กำหนดว่ามีกี่หน้า
         child: Scaffold(
+          backgroundColor: Colors.blue,
           body: TabBarView(//เลื่อนข้าง
               children: [homeScreen(), FormScreen()]),
+          bottomNavigationBar: TabBar(tabs: [
+            Tab(
+              text: "รายการ",
+              icon: Icon(Icons.list),
+            ),
+            Tab(
+              text: "เพิ่มข้อมูล",
+              icon: Icon(Icons.add),
+            )
+          ]),
         ));
     // homeScreen();
   }
