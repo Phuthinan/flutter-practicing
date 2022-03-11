@@ -47,6 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return homeScreen();
+    return DefaultTabController(
+        length: 2, //กำหนดว่ามีกี่หน้า
+        child: Scaffold(
+          body: TabBarView(//เลื่อนข้าง
+              children: [homeScreen(), FormScreen()]),
+        ));
+    // homeScreen();
   }
 }

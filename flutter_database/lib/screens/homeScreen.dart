@@ -24,15 +24,15 @@ class _homeScreenState extends State<homeScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Account App"),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FormScreen();
-                  }));
-                },
-                icon: Icon(Icons.add))
-          ],
+          // actions: [
+          //   IconButton(
+          //       onPressed: () {
+          //         Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //           return FormScreen();
+          //         }));
+          //       },
+          //       icon: Icon(Icons.add))
+          // ],
         ),
         body: Consumer(builder: (context, TransactionProvider trans, child) {
           var count = trans.transaction.length;
