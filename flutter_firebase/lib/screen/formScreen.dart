@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/model/student.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -10,6 +12,9 @@ class formScreen extends StatefulWidget {
 class _formScreenState extends State<formScreen> {
   final formKey = GlobalKey<FormState>();
   student myStudent = student(fname: '', lname: '', email: '', score: '');
+  final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  CollectionReference studentCollection =
+      FirebaseFirestore.instance.collection("student");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,11 +91,15 @@ class _formScreenState extends State<formScreen> {
                           "บันทึกข้อมูล",
                           style: TextStyle(fontSize: 20),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (formKey.currentState!.validate()) {
-                            formKey.currentState?.save();
-                            print(
-                                '${myStudent.fname} ${myStudent.lname} email:${myStudent.email} score: ${myStudent.score}');
+                            formKey.currentState!.save();
+                            await studentCollection.add({
+                              "fname": myStudent.fname,
+                              "lname": myStudent.lname,
+                              "email": myStudent.email,
+                              "score": myStudent.score
+                            });
                             formKey.currentState!.reset();
                           }
                         },

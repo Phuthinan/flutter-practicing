@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "702304703713",
+    "project_id": "studentdata-100a9",
+    "storage_bucket": "studentdata-100a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702304703713:android:1b8044ad66c2224c2c13a0",
+        "android_client_info": {
+          "package_name": "com.example.flutter_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702304703713-eahb3vk8jqrot7o7840bkl1v3j3q5053.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBibZRiKn_HY2_rfr6FJ0vuF9z4Kwxmowk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "702304703713-eahb3vk8jqrot7o7840bkl1v3j3q5053.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
