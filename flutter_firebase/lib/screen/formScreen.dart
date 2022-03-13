@@ -13,7 +13,7 @@ class _formScreenState extends State<formScreen> {
   final formKey = GlobalKey<FormState>();
   student myStudent = student(fname: '', lname: '', email: '', score: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  CollectionReference studentCollection =
+  CollectionReference _studentCollection =
       FirebaseFirestore.instance.collection("student");
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class _formScreenState extends State<formScreen> {
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();
-                            await studentCollection.add({
+                            await _studentCollection.add({
                               "fname": myStudent.fname,
                               "lname": myStudent.lname,
                               "email": myStudent.email,
