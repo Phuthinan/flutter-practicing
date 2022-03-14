@@ -18,8 +18,12 @@ class BigText extends StatelessWidget {
     return Text(
       text,
       overflow: overflow,
+      maxLines: 1,
       style: TextStyle(
-          color: color, fontWeight: FontWeight.w400, fontFamily: 'RobotoMono'),
+          color: color,
+          fontWeight: FontWeight.w400,
+          fontFamily: 'RobotoMono',
+          fontSize: size),
     );
   }
 }
