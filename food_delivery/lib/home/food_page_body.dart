@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/utils/dimension.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/icon_and_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
@@ -19,7 +20,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
   double _scaleFactor = 0.8;
-  double _height = 220;
+  double _height = Dimensions.pageViewContainer;
   int numberPage = 5;
   @override
   void initState() {
@@ -91,7 +92,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: 250,
+            height: Dimensions.pageViewContainer,
             margin: EdgeInsets.only(left: 5, right: 5),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
@@ -103,7 +104,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: 140,
+                height: Dimensions.pageViewTextContainer,
                 margin: EdgeInsets.only(left: 20, right: 20, bottom: 30),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -117,13 +118,16 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                       BoxShadow(color: Colors.white, offset: Offset(-5, 0))
                     ]),
                 child: Container(
-                  padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+                  padding: EdgeInsets.only(
+                      top: Dimensions.height10,
+                      left: Dimensions.height10 * 1.5,
+                      right: Dimensions.height10 * 1.5),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BigText(text: "Noodle"),
                       SizedBox(
-                        height: 10,
+                        height: Dimensions.height10,
                       ),
                       Row(
                         children: [
@@ -150,9 +154,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                         ],
                       ),
                       SizedBox(
-                        height: 20,
+                        height: Dimensions.height10 * 2,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconAndText(
                               icon: Icons.circle_sharp,
