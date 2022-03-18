@@ -52,6 +52,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 return _buildPageItem(position);
               }),
         ),
+        // สร้าง dot สำหรับแสดงว่าอยู่หน้าไหน
         new DotsIndicator(
           dotsCount: numberPage,
           position: _currentPageValue,
@@ -59,12 +60,27 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             color: Colors.black87, // Inactive color
             activeColor: AppColors.mainColor,
           ),
+        ),
+        SizedBox(
+          height: Dimensions.di(10),
+        ),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.di(30)),
+          child: Row(
+            children: [
+              BigText(text: "Popular"),
+              SizedBox(
+                width: Dimensions.di(10),
+              )
+            ],
+          ),
         )
       ],
     );
   }
 
   Widget _buildPageItem(int index) {
+    //  ให้ stack ต่อไปขนาดเล็กลง
     Matrix4 matrix = new Matrix4.identity();
     if (index == _currentPageValue.floor()) {
       var currScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
@@ -107,11 +123,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               child: Container(
                 height: Dimensions.pageViewTextContainer,
                 margin: EdgeInsets.only(
-                    left: Dimensions.di(20),
-                    right: Dimensions.di(20),
+                    left: Dimensions.di(35),
+                    right: Dimensions.di(35),
                     bottom: Dimensions.di(30)),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimensions.di(30)),
+                    borderRadius: BorderRadius.circular(Dimensions.di(20)),
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
