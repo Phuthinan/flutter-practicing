@@ -91,24 +91,40 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         //  list of food and images
-        ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                    left: Dimensions.di(20), right: Dimensions.di(20)),
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.di(20)),
-                          color: Colors.white30),
-                    )
-                  ],
-                ),
-              );
-            })
+        Container(
+          height: 1000,
+          child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(
+                      left: Dimensions.di(20),
+                      right: Dimensions.di(20),
+                      bottom: Dimensions.di(10)),
+                  child: Row(
+                    children: [
+                      //  image section
+                      Container(
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(Dimensions.di(20)),
+                            color: Colors.white38,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image:
+                                    AssetImage("assets/image/fishball.jpg"))),
+                      ),
+                      //  text container
+                      Container()
+                    ],
+                  ),
+                );
+              }),
+        )
       ],
     );
   }
