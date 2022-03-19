@@ -67,14 +67,48 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Container(
           margin: EdgeInsets.only(left: Dimensions.di(30)),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              BigText(text: "Popular"),
+              Container(
+                  child: BigText(
+                text: "Popular",
+              )),
               SizedBox(
                 width: Dimensions.di(10),
+              ),
+              Container(
+                  child: BigText(
+                text: ".",
+                color: Colors.black26,
+              )),
+              SizedBox(
+                width: Dimensions.di(10),
+              ),
+              Container(
+                child: SmallText(text: "Food Pairing"),
               )
             ],
           ),
-        )
+        ),
+        //  list of food and images
+        ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                    left: Dimensions.di(20), right: Dimensions.di(20)),
+                child: Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.di(20)),
+                          color: Colors.white30),
+                    )
+                  ],
+                ),
+              );
+            })
       ],
     );
   }
