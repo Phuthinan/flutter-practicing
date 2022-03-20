@@ -17,6 +17,7 @@ class FoodPageBody extends StatefulWidget {
 
 class _FoodPageBodyState extends State<FoodPageBody> {
   //PageController viewportFraction: ค่ามากยิ่งมองไม่เห็นอันถัดไป
+
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
   double _scaleFactor = 0.8;
@@ -91,40 +92,77 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         //  list of food and images
-        Container(
-          height: 1000,
-          child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(
-                      left: Dimensions.di(20),
-                      right: Dimensions.di(20),
-                      bottom: Dimensions.di(10)),
-                  child: Row(
-                    children: [
-                      //  image section
-                      Container(
-                        width: 120,
-                        height: 120,
+        ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                    left: Dimensions.di(15),
+                    right: Dimensions.di(15),
+                    bottom: Dimensions.di(10)),
+                child: Row(
+                  children: [
+                    //  image section
+                    Container(
+                      width: Dimensions.diWidth(110),
+                      height: Dimensions.diWidth(110),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.di(20)),
+                          color: Colors.white38,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/image/fishball.jpg"))),
+                    ),
+                    //  text container
+                    Expanded(
+                      //Expanded  ใช้พทที่เหลือทั้งหมด
+                      child: Container(
+                        height: Dimensions.diWidth(100),
+                        // width: 200,
                         decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(Dimensions.di(20)),
-                            color: Colors.white38,
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image:
-                                    AssetImage("assets/image/fishball.jpg"))),
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(Dimensions.di(20)),
+                                topLeft: Radius.circular(Dimensions.di(20))),
+                            color: Colors.white),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: Dimensions.di(10),
+                              right: Dimensions.di(10)),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                BigText(text: "ลูกชิ้นปลา"),
+                                SmallText(text: "ร้อยละ 600 บาท"),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconAndText(
+                                        icon: Icons.circle_sharp,
+                                        text: "Normal",
+                                        iconcolor: AppColors.iconColor1),
+                                    IconAndText(
+                                        icon: Icons.location_on,
+                                        text: "1.7km",
+                                        iconcolor: AppColors.mainColor),
+                                    IconAndText(
+                                        icon: Icons.access_time_rounded,
+                                        text: "32min",
+                                        iconcolor: AppColors.iconColor2)
+                                  ],
+                                )
+                              ]),
+                        ),
                       ),
-                      //  text container
-                      Container()
-                    ],
-                  ),
-                );
-              }),
-        )
+                    )
+                  ],
+                ),
+              );
+            }),
       ],
     );
   }

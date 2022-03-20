@@ -9,6 +9,11 @@ class Dimensions {
   static double pageViewTextContainer = screenHeight / 6.51;
 
   static double di(double val) {
-    return screenHeight / 718 * val;
+    return screenHeight / 781 * val;
+  }
+
+// screen width of virtual = 392
+  static double diWidth(double val) {
+    return screenWidth / 392 * val;
   }
 }
