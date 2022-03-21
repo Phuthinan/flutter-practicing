@@ -4,6 +4,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimension.dart';
+import 'package:food_delivery/widgets/app_column.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/icon_and_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
@@ -21,7 +22,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
   double _scaleFactor = 0.8;
-  double _height = Dimensions.pageViewContainer;
+  double _height = Dimensions.height(220);
   int numberPage = 5;
   @override
   void initState() {
@@ -198,7 +199,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: Dimensions.pageViewContainer,
+            height: Dimensions.height(220),
             margin: EdgeInsets.only(
                 left: Dimensions.height(5), right: Dimensions.height(5)),
             decoration: BoxDecoration(
@@ -211,7 +212,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: Dimensions.pageViewTextContainer,
+                height: Dimensions.height(220),
                 margin: EdgeInsets.only(
                     left: Dimensions.height(35),
                     right: Dimensions.height(35),
@@ -228,64 +229,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                       BoxShadow(color: Colors.white, offset: Offset(-5, 0))
                     ]),
                 child: Container(
-                  padding: EdgeInsets.only(
-                      top: Dimensions.height(10),
-                      left: Dimensions.height(15),
-                      right: Dimensions.height(15)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BigText(text: "Noodle"),
-                      SizedBox(
-                        height: Dimensions.height(10),
-                      ),
-                      Row(
-                        children: [
-                          Wrap(
-                              children: List.generate(
-                                  5,
-                                  (index) => Icon(
-                                        Icons.star,
-                                        color: AppColors.mainColor,
-                                        size: 15,
-                                      ))),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          SmallText(text: "4.5"),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          SmallText(text: "1287"),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          SmallText(text: "comments")
-                        ],
-                      ),
-                      SizedBox(
-                        height: Dimensions.height(20),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconAndText(
-                              icon: Icons.circle_sharp,
-                              text: "Normal",
-                              iconcolor: AppColors.iconColor1),
-                          IconAndText(
-                              icon: Icons.location_on,
-                              text: "1.7km",
-                              iconcolor: AppColors.mainColor),
-                          IconAndText(
-                              icon: Icons.access_time_rounded,
-                              text: "32min",
-                              iconcolor: AppColors.iconColor2)
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+                    padding: EdgeInsets.only(
+                        top: Dimensions.height(10),
+                        left: Dimensions.height(15),
+                        right: Dimensions.height(15)),
+                    child: AppColumn(
+                      foodName: "Noodle",
+                    )),
               ))
         ],
       ),
