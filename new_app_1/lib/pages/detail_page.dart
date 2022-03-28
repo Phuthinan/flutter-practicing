@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_app_1/utils/colors.dart';
 import 'package:new_app_1/widgets/app_button.dart';
 import 'package:new_app_1/widgets/large_text.dart';
+import 'package:new_app_1/widgets/responsive_button.dart';
 import 'package:new_app_1/widgets/small_text.dart';
 
 class DetailPage extends StatefulWidget {
@@ -27,7 +28,7 @@ class _DetailPageState extends State<DetailPage> {
                 right: 0,
                 child: Container(
                   width: double.maxFinite,
-                  height: 350,
+                  height: 300,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage("assets/image/mountain2.jpg"),
@@ -47,7 +48,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
             Positioned(
-                top: 330,
+                top: 280,
                 child: Container(
                   padding: EdgeInsets.only(left: 20, right: 20, top: 20),
                   width: MediaQuery.of(context).size.width,
@@ -137,9 +138,48 @@ class _DetailPageState extends State<DetailPage> {
                             );
                           },
                         ),
+                      ),
+                      SizedBox(height: 20),
+                      LargeText(
+                        text: "Description",
+                        color: Colors.black.withOpacity(0.8),
+                        size: 20,
+                      ),
+                      Container(
+                        width: double.maxFinite,
+                        height: 100,
+                        child: Expanded(
+                          flex: 1,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: SmallText(
+                                text:
+                                    "อยู่ห่างจากตัวจังหวัดราชบุรีประมาณ 8  กิโลเมตร ตำบลเกาะพลับพลา อำเภอเมือง จังหวัดราชบุรี  แต่เดิมเป็นแหล่งระเบิดและย่อยหินที่สำคัญของไทยตั้งแต่สมัยต้นรัตนโกสินทร์ เนื่องจากเป็นปูนที่มีคุณภาพดี ต่อมาทั้งภาครัฐและประชาชนได้เล็งเห็นถึงความเสื่อมโทรมของสภาพภูมิประเทศ และวิวทิวทัศน์ "),
+                          ),
+                        ),
                       )
                     ],
                   ),
+                )),
+            Positioned(
+                bottom: 20,
+                left: 20,
+                right: 20,
+                child: Row(
+                  children: [
+                    AppButtons(
+                      color: AppColors.textColor,
+                      backgroundColor: Colors.white,
+                      borderColor: AppColors.textColor,
+                      size: 60,
+                      isIcon: true,
+                      icon: Icons.favorite_border,
+                    ),
+                    SizedBox(width: 20),
+                    ResponsiveButton(
+                      isResponsive: true,
+                    )
+                  ],
                 ))
           ],
         ),
