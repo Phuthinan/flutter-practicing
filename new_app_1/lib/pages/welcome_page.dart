@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:new_app_1/cubit/app_cubit.dart';
 import 'package:new_app_1/utils/colors.dart';
 import 'package:new_app_1/widgets/large_text.dart';
 import 'package:new_app_1/widgets/responsive_button.dart';
@@ -55,7 +57,18 @@ class _WelcomePageState extends State<WelcomePage> {
                                 text:
                                     "Mountain hikes give you an incredible sense of freedom along with endurance tests")),
                         SizedBox(height: 20),
-                        ResponsiveButton(width: 120)
+                        GestureDetector(
+                          onTap: (() {
+                            BlocProvider.of<AppCubits>(context).getData();
+                          }),
+                          child: Container(
+                              width: 200,
+                              child: Row(
+                                children: [
+                                  ResponsiveButton(width: 120),
+                                ],
+                              )),
+                        )
                       ],
                     ),
                     Column(

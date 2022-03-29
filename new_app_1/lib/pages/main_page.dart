@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:new_app_1/pages/navpages/bar_item_page.dart';
-import 'package:new_app_1/pages/navpages/home_page.dart';
+import 'package:new_app_1/pages/home_page.dart';
 import 'package:new_app_1/pages/navpages/my_page.dart';
 import 'package:new_app_1/pages/navpages/search_page.dart';
 
