@@ -4,7 +4,7 @@ import 'package:new_app_1/cubit/app_cubit.dart';
 import 'package:new_app_1/cubit/app_cubit_logic.dart';
 import 'package:new_app_1/cubit/app_cubit_state.dart';
 import 'package:new_app_1/pages/detail_page.dart';
-import 'package:new_app_1/pages/navpages/main_page.dart';
+import 'package:new_app_1/pages/main_page.dart';
 import 'package:new_app_1/pages/welcome_page.dart';
 import 'package:new_app_1/service/data_services.dart';
 
