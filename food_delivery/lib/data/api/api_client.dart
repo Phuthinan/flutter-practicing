@@ -8,13 +8,12 @@ class ApiClient extends GetConnect implements GetxService {
     baseUrl = appBaseUrl;
     timeout = Duration(seconds: 30);
     _mainHeaders = {
-      'Content-type': 'application.json; charset=UTF-8',
+      'Content-type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer $token'
     };
   }
-  Future<Response> getData(
-    String uri,
-  ) async {
+//response from getx method
+  Future<Response> getData(String uri) async {
     try {
       //call sth from the servver
       Response response = await get(uri);
