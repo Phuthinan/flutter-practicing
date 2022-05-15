@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kafe/pages/home_page.dart';
+import 'package:kafe/pages/main_page.dart';
 import 'package:kafe/pages/splash_page.dart';
+import 'pages/mainPage/home_page.dart';
 
 void main() {
   runApp(const MyApp());

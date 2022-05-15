@@ -1,7 +1,8 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:kafe/pages/home_page.dart';
-import 'package:kafe/utils/colors.dart';
+
+import '../utils/colors.dart';
+import 'main_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -25,6 +26,7 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    var appColors = AppColors;
     return AnimatedSplashScreen(
       splash: "assets/images/logo.png",
       splashIconSize: 300,
@@ -37,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
       //             DecorationImage(image: AssetImage("assets/images/logo.png"))),
       //   ),
       // ),
-      nextScreen: HomePage(),
+      nextScreen: MainPage(),
       backgroundColor: AppColors.mainColor,
       duration: 3000,
       splashTransition: SplashTransition.fadeTransition,
